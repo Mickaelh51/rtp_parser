@@ -3,7 +3,7 @@ import pyshark
 import os
 
 AllCallsData = {}
-cap = pyshark.FileCapture('/data/home/mike/Documents/test_RTP_python/capt_outgoing_call_isbc1.pcap', display_filter='sip or rtp')
+cap = pyshark.FileCapture('/data/home/mike/Documents/test_RTP_python/capt_outgoing_call.pcap', display_filter='sip or rtp')
 
 
 for i in cap:
