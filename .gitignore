@@ -1,0 +1,4 @@
+*.pcap
+*.raw
+*.wav
+info/*
