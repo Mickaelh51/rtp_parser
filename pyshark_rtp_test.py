@@ -3,9 +3,17 @@ import pyshark
 import os
 
 AllCallsData = {}
-cap = pyshark.FileCapture('/data/home/mike/Documents/test_RTP_python/capt_outgoing_call.pcap', display_filter='sip or rtp')
+cap = pyshark.LiveCapture('wlp3s0')
+cap.sniff(packet_count=5)
+#cap = pyshark.LiveCapture('wlp3s0', display_filter='sip or rtp')
+
+def print_info(pkt):
+    print 'Just arrived:', pkt
+
+cap.apply_on_packets(print_info, timeout=100)
 
 
+"""
 for i in cap:
     CallsData = []
     try:
@@ -76,3 +84,4 @@ for key, value in AllCallsData.iteritems() :
         raw_audio.write(audio)
 
     os.system("/usr/bin/sox -t raw -r 8000 -c 1 -e a-law " + filename + ".raw " + filename + ".wav")
+"""
